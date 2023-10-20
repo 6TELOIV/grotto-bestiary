@@ -1,0 +1,93 @@
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.profile-card p {
+    margin: 0;
+}
+
+.profile-card .bio {
+    display: inline-block;
+    margin: 0;
+    margin-top: 8px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+    max-height: 128px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.profile-header {
+    height: 128px;
+    position: relative;
+    margin-bottom: 65px;
+}
+
+.profile-header-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-badges {
+    position: absolute;
+    top: 144px;
+    left: 180px;
+    background-color: rgb(43, 45, 49);
+    padding: 4px 8px;
+    font-size: 24px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px
+}
+
+.profile-picture {
+    background-color: rgb(43, 45, 49);
+    box-sizing: content-box;
+    position: absolute;
+    left: 16px;
+    top: 56px;
+    height: 128px;
+    width: 128px;
+    border-radius: 80px;
+    border: 8px solid rgb(24, 25, 27);
+}
+
+.profile-detials {
+    border: 8px solid rgb(24, 25, 27);
+    background-color: rgb(43, 45, 49);
+    border-radius: 16px;
+    padding: 8px 16px;
+    flex-grow: 1;
+}
+
+.profile-detials .emoji {
+    width: 1.2em;
+    display: inline-block;
+    margin: 0;
+}
+
+.profile-detials .profile-name {
+    font-weight: bold;
+    font-size: x-large;
+    margin: 0 0 8px -8px;
+}
+
+.profile-discord-name {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.profile-card a {
+    color: white;
+}
+
+.profile-card a::after {
+    content: '↗'
+}

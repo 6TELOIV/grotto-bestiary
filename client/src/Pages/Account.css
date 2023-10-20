@@ -1,0 +1,57 @@
+.profile-page {
+    padding: 0 16px;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.profile-container > * {
+    position: relative;
+    flex-grow: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.account-settings {
+    padding-bottom: 56px !important;
+}
+
+.account-settings textarea {
+    width: calc(100% - 16px);
+    border: 0;
+    background-color: rgb(43, 45, 49);
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    resize: none;
+    font-family: inherit;
+    font-size: inherit;
+    height: 128px;
+}
+
+.save-profile {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+}
+
+.profile-page button.nuke {
+    background-color: rgb(99, 0, 0);
+    color: white;
+    border-color: rgb(58, 0, 0);
+}
+
+.profile-page button.nuke:hover {
+    background-color: rgb(134, 0, 0);
+    border-color: rgb(82, 0, 0);
+}
+
+.profile-page button.nuke:active {
+    background-color: rgb(73, 0, 0);
+    border-color: rgb(36, 0, 0);
+}

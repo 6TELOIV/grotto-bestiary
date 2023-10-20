@@ -1,0 +1,36 @@
+.card-gallery {
+    border: 1px solid #444;
+    min-height: 400px;
+    background-color: rgb(34, 35, 37);
+}
+
+.card-gallery > .card-gallery-controls {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: rgb(24, 25, 27);
+    padding: 8px;
+    border-bottom: 1px solid #444;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+}
+
+.card-gallery > .card-gallery-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--gallery-zoom));
+    grid-gap: calc(0.05 * var(--gallery-zoom));
+    padding: 8px;
+}
+
+.card-gallery > .card-gallery-images > a > img {
+    width: 100%;
+    height: auto;
+    border-radius: calc(0.05 * var(--gallery-zoom));
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 720px) {
+    .card-gallery > .card-gallery-controls {
+        grid-template-columns: 1fr;
+    }
+}

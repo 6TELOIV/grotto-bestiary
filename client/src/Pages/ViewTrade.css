@@ -1,0 +1,60 @@
+.view-trade-page {
+    padding: 0 16px;
+}
+
+.view-trade {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto 16px;
+}
+
+.view-trade > .info-box {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+    height: auto;
+    margin-bottom: 0;
+}
+
+.view-trade > .info-box.trade-actions {
+    grid-column: 1 / span 2;
+}
+
+.view-trade-page .trade-table {
+    max-height: 100%;
+    min-height: 200px;
+    height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    border: 1px solid #444;
+    border-width: 0 1px 1px 1px;
+}
+
+.view-trade-page .trade-table td,
+.view-trade-page .trade-table th {
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
+
+.view-trade-page table {
+    width: calc(100%);
+}
+
+.view-trade-page td,
+.view-trade-page th {
+    border-width: 1px 0px;
+}
+
+.view-trade-page .trade-table > table > tbody > tr:last-child > td {
+    border-bottom: 0;
+}
+
+@media only screen and (max-width: 740px) {
+    /* styles for browsers smaller than 740px; */
+    .view-trade > .info-box {
+        grid-column: 1 / span 2;
+        margin-bottom: 0;
+    }
+}
+

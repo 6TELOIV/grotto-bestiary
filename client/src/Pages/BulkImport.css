@@ -1,0 +1,51 @@
+.bulk-import-page {
+    padding: 0 16px;
+}
+
+.bulk-import {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.bulk-import-page input[type="submit"]:disabled {
+    background-color: #2e3831 !important;
+    color: #919191 !important;
+    cursor: not-allowed;
+}
+
+.bulk-import-page textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 200px;
+    overflow-y: auto;
+    margin: 8px 0;
+    resize: none;
+}
+
+.bulk-import-page form {
+    border-bottom: 1px solid #444;
+    padding-bottom: 16px;
+}
+
+.bulk-import-page .bulk-import-output ul {
+    display: block;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #444;
+}
+
+.bulk-import-page .bulk-import-output button {
+    background-color: rgb(99, 0, 0);
+    color: white;
+    border-color: rgb(58, 0, 0);
+}
+
+.bulk-import-page .bulk-import-output button:hover {
+    background-color: rgb(134, 0, 0);
+    border-color: rgb(82, 0, 0);
+}
+
+.bulk-import-page .bulk-import-output button:active {
+    background-color: rgb(73, 0, 0);
+    border-color: rgb(36, 0, 0);
+}

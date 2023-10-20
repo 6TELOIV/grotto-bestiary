@@ -1,0 +1,237 @@
+table {
+    position: relative;
+    border-collapse: separate;
+    /* Don't collapse */
+    border-spacing: 0;
+    width: fit-content;
+}
+
+td {
+    border-right: 1px solid #444;
+    border-bottom: 1px solid #444;
+    padding: 8px;
+}
+
+/* animate a left-right shimmer over the width of the td */
+table.skeleton,
+table.skeleton > thead,
+table.skeleton > tbody {
+    display: block;
+    width: 100%;
+}
+
+table.skeleton > tbody > tr,
+table.skeleton > thead > tr {
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+}
+
+table.skeleton > tbody > tr > td:not(.small-column),
+table.skeleton > thead > tr > th:not(.small-column) {
+    flex-grow: 1;
+}
+
+table.skeleton > tbody > tr > td > div {
+    overflow: hidden;
+}
+
+table.skeleton > tbody > tr > td > div::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1.3em;
+    animation: shimmer 1s infinite ease-in-out;
+    background: linear-gradient(
+        -90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 20%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0)
+    );
+}
+
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    90% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+table > tbody > tr > td:last-child {
+    border-right: 1px solid #444;
+}
+
+td:not([style*="display: none"]):first-of-type {
+    border-left: 1px solid #444;
+}
+
+th {
+    border-width: 1px 0px;
+    border-style: solid;
+    border-color: #444;
+    background-color: rgb(17, 18, 20);
+    padding: 8px;
+    min-width: 32px;
+    position: sticky;
+    top: 0px;
+}
+
+th.small-column,
+td.small-column {
+    width: 32px;
+}
+
+th::after {
+    content: "↕\FE0E";
+}
+
+th.unsortable::after {
+    content: "";
+}
+
+td.center-column {
+    text-align: center;
+}
+
+td.right-column {
+    text-align: right;
+}
+
+th.sorted::after {
+    content: "↓\FE0E";
+}
+
+th.reverse-sorted::after {
+    content: "↑\FE0E";
+}
+
+tr > th:first-child {
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-color: #444;
+}
+
+tr > th:last-child {
+    border-width: 1px 1px 1px 0px;
+    border-style: solid;
+    border-color: #444;
+}
+
+tbody > tr:nth-child(even) {
+    background-color: rgb(17, 18, 20);
+}
+
+tbody > tr:hover:not(.holo) {
+    background-color: rgb(58, 61, 66);
+}
+
+tbody > tr.holo {
+    background-color: rgb(80, 77, 50);
+}
+
+tbody > tr.holo:hover {
+    background: linear-gradient(
+        -45deg,
+        rgb(80, 77, 50) 0%,
+        rgb(80, 77, 50) 50%,
+        rgb(119, 116, 86) 60%,
+        rgb(80, 77, 50) 70%,
+        rgb(139, 135, 93) 80%,
+        rgb(80, 77, 50) 90%
+    );
+    background-size: 500% 500%;
+    animation: shine 2s ease-in-out infinite;
+    background-position: 100% 100%;
+}
+
+@keyframes shine {
+    0% {
+        background-position: -25% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+input.card-qty {
+    box-sizing: content-box;
+    width: 32px;
+    min-width: 32px;
+    padding: 2px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: medium;
+}
+
+input.card-qty:focus {
+    background-color: white;
+    color: black;
+}
+
+button.add-holo:hover {
+    cursor: pointer;
+}
+
+td a {
+    color: white;
+}
+
+td a::after {
+    content: "↗";
+}
+
+@media only screen and (max-width: 1200px) {
+    /* styles for browsers smaller than 1200px; */
+    table {
+        width: calc(100%);
+    }
+
+    td,
+    th {
+        border-width: 1px 0px;
+    }
+}
+
+tbody > tr:nth-child(odd) > td.inv-column {
+    background-color: rgb(49, 47, 31);
+}
+
+tbody > tr:nth-child(even) > td.inv-column {
+    background-color: rgb(34, 32, 22);
+}
+
+tbody > tr:nth-child(odd) > td.trade-column {
+    background-color: rgb(31, 33, 49);
+}
+
+tbody > tr:nth-child(even) > td.trade-column {
+    background-color: rgb(22, 22, 34);
+}
+
+tbody > tr:nth-child(odd) > td.wish-column {
+    background-color: rgb(32, 49, 31);
+}
+
+tbody > tr:nth-child(even) > td.wish-column {
+    background-color: rgb(22, 34, 22);
+}
+
+td.inv-column,
+td.trade-column,
+td.wish-column {
+    border-right: 0;
+}
+
+td.left-break-column {
+    border-left: rgb(68, 68, 68) solid 3px;
+}

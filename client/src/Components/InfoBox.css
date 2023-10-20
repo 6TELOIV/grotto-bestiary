@@ -1,0 +1,40 @@
+.info-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    width: min-content;
+    min-width: 30%;
+}
+
+.info-boxes > * {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.info-box {
+    background-color: rgb(24, 25, 27);
+    border: 1px solid #444;
+    padding: 8px;
+    margin-bottom: 16px;
+}
+
+.info-box h2 {
+    padding-bottom: 4px;
+    margin: 4px 0px;
+    border-bottom: 1px solid #444;
+}
+
+.info-box > ul,
+.info-box p {
+    margin: 4px 0px;
+}
+
+.info-box a {
+    color: white;
+}
+
+.info-box a::after {
+    content: "↗";
+}

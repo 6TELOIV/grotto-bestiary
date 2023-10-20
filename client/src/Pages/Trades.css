@@ -1,0 +1,24 @@
+.trades-page {
+    padding: 0 16px 16px 16px;
+}
+
+.trades {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex-wrap: wrap-reverse;
+    align-items: flex-end;
+}
+
+.trades > * {
+    flex-grow: 1;
+}
+
+.trades-page table {
+    width: 100%;
+}
+
+.trades-page .table-container {
+    max-height: 200px;
+    overflow-y: auto;
+}

@@ -1,0 +1,152 @@
+.rules {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.rule {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px 4fr 32px 32px 32px;
+    gap: 8px;
+    background-color: rgb(43, 45, 49);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.rule > .row-end-buttons {
+    grid-column: span 2;
+    display: flex;
+}
+
+.rule > .row-end-buttons > .move-down {
+    border-radius: 0 16px 16px 0;
+    padding: 8px 10px 8px 6px
+}
+
+.rule > .row-end-buttons > .move-up  {
+    border-radius: 16px 0 0 16px;
+    padding: 8px 6px 8px 10px
+}
+
+.rule > .row-end-buttons > .move-down,
+.rule > .row-end-buttons > .move-up {
+    background-color: rgb(25, 26, 29);
+    color: white;
+    height: 32px;
+    width: 32px;
+}
+
+.rule > .row-end-buttons > .move-down:hover,
+.rule > .row-end-buttons > .move-up:hover {
+    color: white;
+    background-color: rgb(64, 67, 73);
+}
+
+.rule > .row-end-buttons > .move-down:active,
+.rule > .row-end-buttons > .move-up:active {
+    color: white;
+    background-color: rgb(25, 26, 29);
+}
+
+.rule > h3 {
+    margin: 0;
+    grid-column: span 4;
+}
+
+.rule > h4 {
+    grid-column: span 7;
+    margin: 0;
+}
+
+.rule > label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.rule > .wide-input {
+    grid-column: span 6;
+}
+
+
+.rule > input[type="checkbox"]{
+    width: auto;
+}
+
+.rule > input[type="text"] {
+    border: 0;
+    background-color: rgb(25, 26, 29);
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: inherit;
+    margin-right: 8px;
+    min-width: 50px;
+    height: 32px;
+    box-sizing: border-box;
+}
+
+.rules button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out, border-radius 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.rules button:hover {
+    cursor: pointer;
+}
+
+.rule > button.add {
+    grid-column: span 7;
+}
+
+.rules button.add {
+    color: rgb(0, 134, 0);
+    background-color: rgb(43, 45, 49);
+    padding: 8px;
+    height: 32px;
+    border-radius: 16px;
+}
+
+.rule > button.add {
+    background-color: rgb(25, 26, 29);
+}
+
+.rules button.add-primary {
+    background-color: rgb(0, 99, 0);
+    color: white;
+}
+
+.rules button.add:hover {
+    color: white;
+    background-color: rgb(0, 134, 0);
+    border-radius: 8px;
+}
+
+.rules button.add:active {
+    color: white;
+    background-color: rgb(0, 73, 0);
+}
+
+.rules button.delete {
+    background-color: rgb(25, 26, 29);
+    color: rgb(134, 0, 0);
+    padding: 8px;
+    height: 32px;
+    border-radius: 16px;
+}
+
+.rules button.delete:hover {
+    color: white;
+    background-color: rgb(134, 0, 0);
+    border-radius: 8px;
+}
+
+.rules button.delete:active {
+    color: white;
+    background-color: rgb(73, 0, 0);
+}

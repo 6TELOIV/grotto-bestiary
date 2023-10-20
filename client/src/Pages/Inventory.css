@@ -1,0 +1,43 @@
+.inventory-page {
+    padding: 0 16px 16px;
+}
+
+.saving-note {
+    font-size: smaller;
+    font-weight: lighter;
+}
+
+.inventory {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex-wrap: wrap-reverse;
+    align-items: flex-end;
+    margin-top: 16px;
+}
+
+.inventory>* {
+    flex-grow: 1;
+}
+
+.inventory-table {
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    border-bottom: 1px solid #444;
+}
+
+.inventory-table>* {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+
+    /* styles for browsers smaller than 1200px; */
+    .inventory {
+        gap: 32px;
+    }
+
+    .inventory-table {
+        margin: 0 -16px;
+    }
+}

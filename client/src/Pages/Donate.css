@@ -1,0 +1,39 @@
+.donate-container {
+    display: flex;
+    width: calc(100% - 32px);
+    height: calc(100% - 96px);
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 16px;
+}
+
+.donate-container p > a {
+    color: white;
+}
+
+.donate-container p > a::after {
+    content: "↗";
+}
+
+.donate-container > * {
+    flex-grow: 1;
+    width: fit-content;
+    max-width: 400px;
+}
+
+#kofiframe {
+    border: 1px solid #444;
+    border-radius: 14px;
+    height:632px;
+    min-height: fit-content;
+    background: #f9f9f9;
+}
+
+.flags {
+    font-size: x-large;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

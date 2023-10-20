@@ -1,0 +1,15 @@
+.tts-deck-export-container {
+    padding: 16px;
+}
+
+textarea {
+    width: calc(min(75ch, 100vw - 32px));
+    border: 1px solid #ddd;
+    height: 300px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+input {
+    border: 1px solid #ddd;
+}

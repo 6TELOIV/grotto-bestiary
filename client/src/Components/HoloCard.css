@@ -1,0 +1,593 @@
+.holo-card {
+    position: relative;
+    width: 100%;
+    border-radius: 20px;
+    transition: transform 0.1s;
+    z-index: 10000;
+    touch-action: none;
+    aspect-ratio: 5 / 7;
+    overflow: hidden;
+    /* drop shadow */
+    --shadow: 0 0 0.5rem 0.25rem hsla(0, 0%, 0%, 0.2);
+    box-shadow: var(--shadow);
+}
+
+.holo-card.holo-promo {
+    aspect-ratio: 7 / 5;
+    border-radius: 0;
+}
+
+.holo-card-3d {
+    transform: perspective(500px) rotateX(calc((var(--y-percent) - 0.5) * 40deg)) rotateY(calc((var(--x-percent) - 0.5) * -40deg)) translateZ(20px);
+}
+
+.holo-card-3d.holo-flipped {
+    transform: perspective(500px) rotateX(calc((var(--y-percent) - 0.5) * 40deg)) rotateY(calc((var(--x-percent) - 0.5) * -40deg + 180deg)) translateZ(-20px);
+}
+
+.holo-card-back {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.holo-card-3d>.holo-card-back{
+    transform: rotatey(180deg);
+}
+
+.holo-card.holo-flipped>.holo-card-back {
+    opacity: 1;
+}
+
+.holo-card>img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.holo-card.holo-promo>img {
+    border-radius: 0;
+}
+
+.holo-card>.card__shine,
+.holo-card>.card__shine2,
+.holo-card>.card__shine3 {
+    opacity: var(--holo-opacity);
+    transition: opacity 0.25s;
+    /* only apply inside art (mask) */
+    mask-size: 100% 100%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-composite: intersect;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.holo-card>.card__shine2,
+.holo-card>.card__shine3 {
+    display: none;
+}
+
+.holo-card.holo-dots>.card__shine2,
+.holo-card.holo-dots>.card__shine3,
+.holo-card.holo-bubble>.card__shine2,
+.holo-card.holo-bubble>.card__shine3,
+.holo-card.holo-shatter>.card__shine2,
+.holo-card.holo-shatter>.card__shine3,
+.holo-card.holo-promo>.card__shine2,
+.holo-card.holo-promo>.card__shine3 {
+    display: block;
+}
+
+.holo-card.holo-dots {
+    --bottom-holo: url(../Assets/dots1-bottom.png);
+    --middle-holo: url(../Assets/dots1-middle.png);
+    --top-holo: url(../Assets/dots1-top.png);
+
+    --bottom-holo2: url(../Assets/dots2-bottom.png);
+    --middle-holo2: url(../Assets/dots2-middle.png);
+    --top-holo2: url(../Assets/dots2-top.png);
+
+    --bottom-holo3: url(../Assets/dots3-bottom.png);
+    --middle-holo3: url(../Assets/dots3-middle.png);
+    --top-holo3: url(../Assets/dots3-top.png);
+}
+
+.holo-card.holo-shatter {
+    --bottom-holo: url(../Assets/shatter1-bottom.png);
+    --middle-holo: url(../Assets/shatter1-middle.png);
+    --top-holo: url(../Assets/shatter1-top.png);
+
+    --bottom-holo2: url(../Assets/shatter2-bottom.png);
+    --middle-holo2: url(../Assets/shatter2-middle.png);
+    --top-holo2: url(../Assets/shatter2-top.png);
+
+    --bottom-holo3: url(../Assets/shatter3-bottom.png);
+    --middle-holo3: url(../Assets/shatter3-middle.png);
+    --top-holo3: url(../Assets/shatter3-top.png);
+}
+
+.holo-card.holo-bubble {
+    --bottom-holo: url(../Assets/bubble1-bottom.png);
+    --middle-holo: url(../Assets/bubble1-middle.png);
+    --top-holo: url(../Assets/bubble1-top.png);
+
+    --bottom-holo2: url(../Assets/bubble2-bottom.png);
+    --middle-holo2: url(../Assets/bubble2-middle.png);
+    --top-holo2: url(../Assets/bubble2-top.png);
+
+    --bottom-holo3: url(../Assets/bubble3-bottom.png);
+    --middle-holo3: url(../Assets/bubble3-middle.png);
+    --top-holo3: url(../Assets/bubble3-top.png);
+}
+
+.holo-card.holo-promo {
+    --bottom-holo2: url(../Assets/cosmos-bottom.png);
+    --middle-holo2: url(../Assets/cosmos-middle.png);
+    --top-holo2: url(../Assets/cosmos-top.png);
+}
+
+.holo-card>.card__shine {
+    --space: 2%;
+    background-image: var(--bottom-holo),
+        repeating-linear-gradient(82deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25)),
+        radial-gradient(farthest-corner circle at var(--x) var(--y),
+            hsla(180, 100%, 89%, 0.5) 5%,
+            hsla(180, 14%, 57%, 0.3) 40%,
+            hsl(0, 0%, 0%) 130%);
+    background-blend-mode: color-burn,
+        multiply;
+    background-position: center,
+        calc(10% + (var(--x-percent) * 80%)) calc(10% + (var(--y-percent) * 80%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1) contrast(1) saturate(.8);
+    mix-blend-mode: color-dodge;
+}
+
+.holo-card>.card__shine::before {
+    content: "";
+    z-index: 2;
+    background-image: var(--middle-holo),
+        repeating-linear-gradient(82deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25));
+    background-blend-mode: lighten,
+        multiply;
+    background-position: center,
+        calc(15% + (var(--x-percent) * 70%)) calc(15% + (var(--y-percent) * 70%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1.25) contrast(1.75) saturate(.8);
+    mix-blend-mode: overlay;
+}
+
+.holo-card>.card__shine::after {
+    content: "";
+    z-index: 3;
+    background-image: var(--top-holo),
+        repeating-linear-gradient(82deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25));
+    background-blend-mode: multiply,
+        multiply;
+    background-position: center,
+        calc(20% + (var(--x-percent) * 60%)) calc(20% + (var(--y-percent) * 60%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1.25) contrast(1.75) saturate(.8);
+    mix-blend-mode: multiply;
+}
+
+.holo-card>.card__shine2 {
+    --space: 2%;
+    background-image: var(--bottom-holo2),
+        repeating-linear-gradient(40deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25)),
+        radial-gradient(farthest-corner circle at var(--x) var(--y),
+            hsla(180, 100%, 89%, 0.5) 5%,
+            hsla(180, 14%, 57%, 0.3) 20%,
+            hsl(0, 0%, 0%) 130%);
+    background-blend-mode: color-burn,
+        multiply;
+    background-position: center,
+        calc(-10% + (var(--x-percent) * -80%)) calc(-20% + (var(--y-percent) * -60%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1) contrast(1) saturate(.8);
+    mix-blend-mode: color-dodge;
+}
+
+.holo-card>.card__shine2::before {
+    content: "";
+    z-index: 2;
+    background-image: var(--middle-holo2),
+        repeating-linear-gradient(40deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25));
+    background-blend-mode: lighten,
+        multiply;
+    background-position: center,
+        calc(-15% + (var(--x-percent) * -70%)) calc(-15% + (var(--y-percent) * -70%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1.25) contrast(1.75) saturate(.8);
+    mix-blend-mode: overlay;
+}
+
+.holo-card>.card__shine2::after {
+    content: "";
+    z-index: 3;
+    background-image: var(--top-holo2),
+        repeating-linear-gradient(40deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25));
+    background-blend-mode: multiply,
+        multiply;
+    background-position: center,
+        calc(-20% + (var(--x-percent) * -60%)), calc(-10% + (var(--y-percent) * -80%)) center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1.25) contrast(1.75) saturate(.8);
+    mix-blend-mode: multiply;
+}
+
+.holo-card>.card__shine3 {
+    --space: 2%;
+    background-image: var(--bottom-holo3),
+        repeating-linear-gradient(20deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25)),
+        radial-gradient(farthest-corner circle at var(--x) var(--y),
+            hsla(180, 100%, 89%, 0.5) 5%,
+            hsla(180, 14%, 57%, 0.3) 20%,
+            hsl(0, 0%, 0%) 130%);
+    background-blend-mode: color-burn,
+        multiply;
+    background-position: center,
+        calc(10% + (var(--x-percent) * 80%)) calc(-20% + (var(--y-percent) * -60%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1) contrast(1) saturate(.8);
+    mix-blend-mode: color-dodge;
+}
+
+.holo-card>.card__shine3::before {
+    content: "";
+    z-index: 2;
+    background-image: var(--middle-holo3),
+        repeating-linear-gradient(20deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25));
+    background-blend-mode: lighten,
+        multiply;
+    background-position: center,
+        calc(15% + (var(--x-percent) * 70%)) calc(-15% + (var(--y-percent) * -70%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1.25) contrast(1.75) saturate(.8);
+    mix-blend-mode: overlay;
+}
+
+.holo-card>.card__shine3::after {
+    content: "";
+    z-index: 3;
+    background-image: var(--top-holo3),
+        repeating-linear-gradient(20deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25));
+    background-blend-mode: multiply,
+        multiply;
+    background-position: center,
+        calc(20% + (var(--x-percent) * 60%)), calc(-10% + (var(--y-percent) * -80%)) center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1.25) contrast(1.75) saturate(.8);
+    mix-blend-mode: multiply;
+}
+
+.holo-card.holo-promo>.card__shine {
+    /* lighting effect */
+    border-radius: inherit;
+    background-image: url(../Assets/grain.webp),
+        radial-gradient(farthest-corner at var(--x) var(--y),
+            rgba(255, 255, 255, 0.4) 5%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(0, 0, 0, 0) 130%);
+    background-blend-mode: screen, hue, hard-light;
+    background-size: 100% 100%, 100% 200%;
+    background-position: center,
+        calc(100% * var(--background-x)) calc(100% * var(--background-y));
+    mix-blend-mode: color-dodge;
+}
+
+.holo-card.holo-promo>.card__shine2 {
+    --space: 2%;
+    background-image: var(--bottom-holo2),
+        repeating-linear-gradient(82deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25)),
+        radial-gradient(farthest-corner circle at var(--x) var(--y),
+            hsla(180, 100%, 89%, 0.5) 5%,
+            hsla(180, 14%, 57%, 0.3) 40%,
+            hsl(0, 0%, 0%) 130%);
+    background-blend-mode: color-burn,
+        multiply;
+    background-position: center,
+        calc(10% + (var(--x-percent) * 80%)) calc(10% + (var(--y-percent) * 80%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1) contrast(1) saturate(.8);
+    mix-blend-mode: color-dodge;
+}
+
+.holo-card.holo-promo>.card__shine2::before {
+    content: "";
+    z-index: 2;
+    background-image: var(--middle-holo2),
+        repeating-linear-gradient(82deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25));
+    background-blend-mode: lighten,
+        multiply;
+    background-position: center,
+        calc(15% + (var(--x-percent) * 70%)) calc(15% + (var(--y-percent) * 70%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1.25) contrast(1.75) saturate(.8);
+    mix-blend-mode: overlay;
+}
+
+.holo-card.holo-promo>.card__shine2::after {
+    content: "";
+    z-index: 3;
+    background-image: var(--top-holo2),
+        repeating-linear-gradient(82deg,
+            hsl(53, 65%, 60%) calc(var(--space)*1),
+            hsl(93, 56%, 50%) calc(var(--space)*2),
+            hsl(176, 54%, 49%) calc(var(--space)*3),
+            hsl(228, 59%, 55%) calc(var(--space)*4),
+            hsl(283, 60%, 55%) calc(var(--space)*5),
+            hsl(326, 59%, 51%) calc(var(--space)*6),
+            hsl(326, 59%, 51%) calc(var(--space)*7),
+            hsl(283, 60%, 55%) calc(var(--space)*8),
+            hsl(228, 59%, 55%) calc(var(--space)*9),
+            hsl(176, 54%, 49%) calc(var(--space)*10),
+            hsl(93, 56%, 50%) calc(var(--space)*11),
+            hsl(53, 65%, 60%) calc(var(--space)*12),
+            rgba(0, 0, 0, 255) calc(var(--space)*16),
+            rgba(0, 0, 0, 255) calc(var(--space)*24),
+            hsl(53, 65%, 60%) calc(var(--space)*25));
+    background-blend-mode: multiply,
+        multiply;
+    background-position: center,
+        calc(20% + (var(--x-percent) * 60%)) calc(20% + (var(--y-percent) * 60%)),
+        center;
+    background-size: cover, 400% 900%, cover;
+    filter: brightness(1.25) contrast(1.75) saturate(.8);
+    mix-blend-mode: multiply;
+}
+
+.holo-card.holo-promo>.card__shine3 {
+    opacity: 1;
+    background-image: url("../Assets/Launch Card Art.png");
+    background-blend-mode: normal;
+    mix-blend-mode: normal;
+}
+
+.holo-card.holo-promo>.card__shine3::before,
+.holo-card.holo-promo>.card__shine3::after {
+    display: none;
+}
+
+.holo-card.holo-wave>.card__shine {
+    /* shine effect */
+    --space: 5%;
+    --angle: 180deg;
+    border-radius: inherit;
+    background-image: url(../Assets/grain.webp),
+        repeating-linear-gradient(45deg,
+            hsl(2, 100%, 73%) calc(var(--space)*1),
+            hsl(53, 100%, 69%) calc(var(--space)*2),
+            hsl(93, 100%, 69%) calc(var(--space)*3),
+            hsl(176, 100%, 76%) calc(var(--space)*4),
+            hsl(228, 100%, 74%) calc(var(--space)*5),
+            hsl(228, 100%, 74%) calc(var(--space)*6),
+            hsl(283, 100%, 73%) calc(var(--space)*7)),
+        repeating-linear-gradient(var(--angle),
+            #0e152e 0%,
+            hsl(180, 10%, 60%) 3.8%,
+            hsl(180, 29%, 66%) 4.5%,
+            hsl(180, 10%, 60%) 5.2%,
+            #0e152e 10%,
+            #0e152e 12%),
+        radial-gradient(farthest-corner circle at var(--x) var(--y),
+            hsla(0, 0%, 0%, 0.1) 12%,
+            hsla(0, 0%, 0%, 0.15) 20%,
+            hsla(0, 0%, 0%, 0.25) 120%);
+    background-blend-mode: screen, hue, hard-light;
+    background-size: 100% 100%, 400% 700%, 300% 175%, 200% 100%;
+    background-position: center,
+        calc(100% * var(--background-x)) calc(100% * var(--background-y)),
+        calc(100% * var(--background-x)) calc(100% * var(--background-y)),
+        calc(100% * var(--background-x)) calc(100% * var(--background-y));
+    mix-blend-mode: color-dodge;
+}
+
+/* holo card flip button */
+.holo-card__flip {
+    margin: 0 auto;
+    margin-top: 16px;
+    display: block;
+    height: 32px;
+    border-radius: 16px;
+    background-color: #333;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    border: none;
+    line-height: 32px;
+    padding: 0 16px;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.holo-card__flip:hover {
+    cursor: pointer;
+    background-color: #444;
+}
+
+.holo-card__flip:active {
+    background-color: #222;
+}

@@ -1,0 +1,84 @@
+.trades-with-page {
+    padding: 0 16px;
+}
+
+.trades-with {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto 16px;
+}
+
+.trades-with > .info-box {
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+    height: auto;
+    margin-bottom: 0;
+}
+
+.trades-with > .info-box.profile-card,
+.trades-with > .info-box.trade-actions {
+    grid-column: 1 / span 2;
+}
+
+.trades-with > .info-box.trade-tables p.info-box-note {
+    width: calc(100% - 16px);
+    background-color: rgb(63, 63, 0);
+    padding: 8px;
+}
+
+.trades-with > .info-box.trade-tables p.info-box-info {
+    width: calc(100% - 16px);
+    background-color: rgb(0, 43, 63);
+    padding: 8px;
+}
+
+.trades-with-page .trade-table {
+    max-height: 100%;
+    min-height: 200px;
+    height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    border: 1px solid #444;
+    border-width: 0 1px 1px 1px;
+}
+
+.trades-with-page .trade-table td,
+.trades-with-page .trade-table th {
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
+
+.trades-with-page table {
+    width: calc(100%);
+}
+
+.trades-with-page td,
+.trades-with-page th {
+    border-width: 1px 0px;
+}
+
+.trades-with-page .trade-table > table > tbody > tr:last-child > td {
+    border-bottom: 0;
+}
+
+.search-bar {
+    margin-bottom: 16px;
+}
+
+.trades-with-page .trade-message {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    height: 100px;
+}
+
+@media only screen and (max-width: 870px) {
+    /* styles for browsers smaller than 870px; */
+    .trades-with > .info-box {
+        grid-column: 1 / span 2;
+        margin-bottom: 0;
+    }
+}

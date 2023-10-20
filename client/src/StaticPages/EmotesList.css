@@ -1,0 +1,6 @@
+.emotes-list {
+    font-size: 3.5rem;
+}
+.emotes-list > .react-tooltip {
+    font-size: 1.2rem;
+}

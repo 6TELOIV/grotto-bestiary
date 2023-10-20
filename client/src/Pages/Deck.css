@@ -1,0 +1,373 @@
+.deck-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    margin: 0 auto;
+    width: 100%;
+    --max-width: calc(max(1000px, 80vw) - 32px);
+}
+
+.deck-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.deck-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: #222;
+    padding: 8px;
+    border-radius: 8px;
+    border: 0.666667px solid rgb(68, 68, 68);
+    width: calc(min(calc(100vw - 64px), 400px));
+}
+
+.deck-modal>h3 {
+    border-bottom: 0.666667px solid rgb(68, 68, 68);
+    margin-top: 0;
+}
+
+.deck-modal>textarea {
+    width: 100%;
+}
+
+.deck-modal>.modal-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.deck-modal>.modal-buttons>button {
+    cursor: pointer;
+    box-sizing: border-box;
+    color: white;
+    font-size: 1em;
+    flex-basis: 0;
+    flex-grow: 1;
+    min-width: calc(max(33%, 150px));
+    background-color: #333;
+    border: 2px #444 solid;
+    height: 32px;
+    border-radius: 16px;
+}
+
+.deck-modal>.modal-buttons>button:hover {
+    background-color: #444;
+}
+
+.deck-modal>.modal-buttons>button:active {
+    background-color: #222;
+}
+
+.deck-modal>.modal-buttons>button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+    color: #888;
+}
+
+.deck-modal>.modal-buttons>button.deck-delete {
+    border: 2px #400 solid;
+    background-color: #300;
+}
+
+.deck-modal>.modal-buttons>button.deck-delete:hover {
+    background-color: #400;
+}
+
+.deck-modal>.modal-buttons>button.deck-delete:active {
+    background-color: #200;
+}
+.deck-header-container {
+    width: 100%;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.deck-header {
+    width: calc(100% - 32px);
+    max-width: var(--max-width);
+    padding: 16px;
+}
+
+.deck-owner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 8px;
+}
+
+.deck-owner-pic {
+    width: 64x;
+    height: 64px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+input[type="text"].deck-title {
+    box-sizing: border-box;
+    width: 100%;
+    height: 1.3em;
+    font-size: 64px;
+    font-weight: bold;
+    color: #fff;
+    background-color: transparent;
+    display: block;
+    margin-bottom: 8px;
+}
+
+select.deck-format {
+    box-sizing: border-box;
+    background-color: rgb(17, 17, 17);
+    border: 0.666667px solid rgb(68, 68, 68);
+    height: 45.3333px;
+    border-radius: 4px;
+}
+
+.deck-challenger-search {
+    display: inline-block;
+    width: 275px;
+}
+
+.deck-attributes {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.deck-attribute-container {
+    display: inline-block;
+}
+
+.deck-attributes>.deck-attribute-container>.deck-attribute {
+    height: 45.3333px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.deck-attributes.deck-attributes-pills>.deck-attribute-container>.deck-attribute {
+    border-radius: 16px;
+    height: 32px;
+    padding: 0px 8px;
+    background-color: #333;
+}
+
+.deck-toolbar {
+    width: calc(100% - 32px);
+    max-width: var(--max-width);
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    border-bottom: 1px solid #555;
+}
+
+.deck-toolbar button {
+    cursor: pointer;
+    color: white;
+    box-sizing: border-box;
+    background-color: rgb(29, 29, 29);
+    border: 0.666667px solid rgb(68, 68, 68);
+    height: 45.3333px;
+    border-radius: 4px;
+}
+
+.deck-toolbar button:hover {
+    background-color: rgb(17, 17, 17);
+}
+
+.deck-toolbar button:active {
+    background-color: rgb(17, 17, 17);
+}
+
+.deck-toolbar .deck-more-menu-button {
+    position: relative;
+}
+
+.deck-toolbar .deck-more-menu {
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    margin-top: 8px;
+    background-color: #222;
+    padding: 8px;
+    width: fit-content;
+    min-width: 100px;
+    list-style: none;
+    border: 0.666667px solid rgb(68, 68, 68);
+    border-radius: 4px;
+}
+
+.deck-toolbar .deck-more-menu li {
+    cursor: pointer;
+}
+
+.deck-toolbar .deck-more-menu li:hover {
+    color: #DDD;
+}
+
+.deck-toolbar .deck-more-menu .deck-more-menu-delete {
+    color: rgb(255, 112, 112);
+}
+
+.deck-toolbar .deck-more-menu .deck-more-menu-delete:hover {
+    color: rgb(209, 91, 91);
+}
+
+.deck-add-search {
+    width: 250px;
+}
+
+.deck-list-container {
+    width: calc(100% - 32px);
+    max-width: var(--max-width);
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.deck-focused-card {
+    width: min(400px, 30%);
+    padding: 16px;
+}
+
+.deck-focused-card>img,
+.deck-focused-card>.deck-focused-card-placeholder {
+    width: 100%;
+    height: auto;
+    border-radius: 1vw;
+    aspect-ratio: 1/1.4;
+}
+
+.deck-focused-card>.deck-focused-card-placeholder {
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #AAA
+}
+
+.deck-list {
+    column-count: auto;
+    column-width: 15rem;
+    gap: 0px 16px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    flex-grow: 1;
+}
+
+.deck-list-group {
+    margin-bottom: 16px;
+    break-inside: avoid-column;
+}
+
+.deck-list-group-items {
+    padding: 0;
+    margin: 0;
+}
+
+.deck-list-group-name {
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #555;
+}
+
+.deck-list-group-name>h3 {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.deck-list-group-name>.deck-list-group-collapse {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    float: right;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.deck-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.deck-list-item-quantity,
+.deck-list-inv-quantity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.deck-list-item-quantity>input[type="number"]::-webkit-outer-spin-button,
+.deck-list-item-quantity>input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.deck-list-item-quantity>input[type="number"],
+.deck-list-item-quantity>label {
+    cursor: pointer;
+}
+
+.deck-list-item-quantity>input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.deck-list-item-quantity>input[type="number"],
+.deck-list-item-quantity>span,
+.deck-list-inv-quantity>span {
+    min-width: 0;
+    width: 2em;
+    padding: 0;
+    border-radius: 0;
+    height: 1.3em;
+}
+
+.deck-list-item-name {
+    flex-grow: 1;
+}
+
+@media (max-width: 600px) {
+    input[type="text"].deck-title {
+        font-size: 48px;
+        height: 1.4em;
+    }
+}

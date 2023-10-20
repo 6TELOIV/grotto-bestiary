@@ -1,0 +1,113 @@
+.decks-page-container {
+    height: 100%;
+}
+
+.decks-page {
+    display: flex;
+    grid-template-columns: 400px auto;
+    max-width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.decks-page.decks-page-anon {
+    grid-template-columns: auto;
+}
+
+.decks-list {
+    border-right: 1px solid #555;
+    min-width: min(90vw, 400px);
+    padding: 0;
+    margin: 0;
+    background-color: #222;
+    overflow-x: 0;
+}
+
+.decks-list.closed {
+    display: none;
+}
+
+.decks-list a {
+    text-decoration: none;
+}
+
+.decks-list li {
+    padding:8px;
+    border-bottom: 1px solid #555;
+    margin: 0;
+    list-style: none;
+    color: white;
+}
+
+.decks-list .deck-list-user-view {
+    background-color: #5f4b17;
+}
+
+.decks-list .active li {
+    background-color: #333;
+}
+
+.decks-list li.add-deck {
+    padding: 0;
+}
+
+.decks-list li.add-deck > button {
+    width: 100%;
+    height: 43px;
+    border: 0;
+    box-sizing: border-box;
+    color: white;
+    background-color: #063600;
+    cursor: pointer;
+}
+
+.deck-view {
+    flex-grow: 1;
+}
+
+.decks-menu-button {
+    z-index: 100;
+    border: 1px solid #555;
+    box-sizing: border-box;
+    border-width: 1px 1px 1px 0;
+    position: fixed;
+    left: 0;
+    top: 70px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 48px;
+    height: 48px;
+    padding: 16px;
+    border-radius: 0 24px 24px 0;
+    background-color: #222;
+    transition: border-radius .3s;
+}
+
+.decks-menu-button > * {
+    transform-origin: center;
+    width: 16px;
+    background-color: white;
+    height: 2px;
+    opacity: 1;
+    transition: transform .3s;
+}
+
+.decks-menu-button.open {
+    transform: translate(-100%);
+    left: min(90vw, 400px);
+    border-radius: 24px 0 0 24px;
+    border-width: 1px 0 1px 1px;
+}
+
+.decks-menu-button.open > *:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+.decks-menu-button.open > *:nth-child(2) {
+    width: 0px;
+}
+.decks-menu-button.open > *:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}

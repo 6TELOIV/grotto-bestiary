@@ -1,0 +1,111 @@
+.card-creator-page {
+    padding: 0 16px 16px 16px;
+}
+
+.card-creator-page>.assets {
+    display: none;
+}
+
+.card-creator-page>.font-loader {
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    max-width: 0 !important;
+}
+
+.card-creator-page>.font-loader>.Amethysta {
+    font-family: Amethysta;
+}
+
+.card-creator-page>.font-loader>.Amethysta.italic {
+    font-family: Amethysta;
+    font-style: italic
+}
+
+.card-creator-page>.font-loader>.Aclonica {
+    font-family: Aclonica;
+}
+
+.card-creator-page>.font-loader>.Aclonica.bold {
+    font-family: Aclonica;
+    font-weight: bold;
+}
+
+.card-creator-page>.font-loader>.Aclonica {
+    font-family: Merriweather;
+}
+
+.card-creator-page>.font-loader>.Merriweather.bold {
+    font-family: Merriweather;
+    font-weight: bold;
+}
+
+.card-creator {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.card-creator>.design-form {
+    flex-grow: 1;
+    min-width: 200px;
+    width: 500px;
+}
+
+.card-creator>.card-preview {
+    min-width: 200px;
+    width: 500px;
+}
+
+.card-creator>.card-preview>#card-preview-img {
+    min-width: 200px;
+    width: 100%;
+}
+
+.card-creator>.card-preview>#card-preview-canvas {
+    display: none;
+    width: 1000px;
+    height: 1400px;
+}
+
+.card-creator>.design-form>form>button[type=submit] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out, border-radius 0.2s ease-in-out, color 0.2s ease-in-out;
+    background-color: rgb(0, 99, 0);
+    color: white;
+    padding: 8px;
+    height: 32px;
+    border-radius: 16px;
+    margin-top: 16px;
+}
+
+.card-creator>.design-form>form>button[type=submit]:hover {
+    cursor: pointer;
+    background-color: rgb(0, 134, 0);
+    border-radius: 8px;
+}
+
+.card-creator>.design-form>form>button[type=submit]:active {
+    background-color: rgb(0, 73, 0);
+}
+
+.card-creator>.design-form>form>button[type=submit]:disabled {
+    background-color: rgb(63, 129, 63);
+    color: rgb(202, 202, 202);
+}
+
+.card-creator>.design-form>form>button[type=submit]:disabled:hover {
+    cursor: not-allowed;
+    background-color: rgb(63, 129, 63);
+    border-radius: 16px;
+}

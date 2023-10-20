@@ -1,0 +1,57 @@
+.card-search-container {
+  padding: 16px;
+}
+
+.card-search-container>h2 {
+  margin: 0;
+}
+
+.search-results {
+  max-height: 60vh;
+  overflow-y: auto;
+  border-bottom: 1px solid #444;
+}
+
+.search-results.query-collapsed {
+  max-height: 70vh;
+}
+
+.query-container {
+  border: 1px solid #444;
+  padding: 8px;
+  background-color: rgb(24, 25, 27);
+  position: relative;
+}
+
+.query-container>.query-collapse {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 32px;
+  background-color: #333;
+  border: #2c2c2c solid 2px;
+  border-radius: 16px;
+  color: white;
+  font-size: 1em;
+  transition: background-color .1s ease-in-out;
+  padding: 0 8px;
+}
+
+.query-container>.query-collapse:hover {
+  cursor: pointer;
+  background-color: #444;
+}
+
+.query-container>.query-collapse:active {
+  cursor: pointer;
+  background-color: #282828;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  /* styles for browsers smaller than 1200px; */
+  .search-results {
+    margin: 0 -16px;
+    max-height: 80vh;
+  }
+}

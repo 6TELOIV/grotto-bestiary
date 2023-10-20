@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <script>
+    try {
+      // transfers sessionStorage from one tab to another
+      var sessionStorage_transfer = function (event) {
+        try {
+          if (!event) { event = window.event; } // ie suq
+          if (!event.newValue) return;          // do nothing if no value to work with
+          if (event.key == 'getSessionStorage') {
+            // another tab asked for the sessionStorage -> send it
+            localStorage.setItem('sessionStorage', JSON.stringify(sessionStorage));
+            // the other tab should now have it, so we're done with it.
+            localStorage.removeItem('sessionStorage'); // <- could do short timeout as well.
+          } else if (event.key == 'sessionStorage' && !sessionStorage.length) {
+            // another tab sent data <- get it
+            var data = JSON.parse(event.newValue);
+            for (var key in data) {
+              sessionStorage.setItem(key, data[key]);
+            }
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      };
+
+      // listen for changes to localStorage
+      if (window.addEventListener) {
+        window.addEventListener("storage", sessionStorage_transfer, false);
+      } else {
+        window.attachEvent("onstorage", sessionStorage_transfer);
+      };
+
+      // Ask other tabs for session storage (this is ONLY to trigger event)
+      if (!sessionStorage.length) {
+        localStorage.setItem('getSessionStorage', 'foobar');
+        localStorage.removeItem('getSessionStorage', 'foobar');
+      };
+    } catch (e) {
+      console.log(e);
+    }
+  </script>
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Violet's Grotto Bestiary</title>
+  <meta name="description" content="Searchable Database for the hit 90's game, Grotto Beasts!" />
+  <meta name="og:description" content="Searchable Database for the hit 90's game, Grotto Beasts!" />
+  <meta name="og:title" content="Violet's Grotto Bestiary" />
+  <meta name="og:image" content="__META_OG_IMAGE__" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#330101" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Aclonica&family=Amethysta&family=Merriweather:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+</body>
+
+</html>
