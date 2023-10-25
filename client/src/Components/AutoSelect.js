@@ -46,6 +46,9 @@ function AutoSelect({ options, onChange, placeholder, defaultValue, className, n
             onChange={(newValue) => onChange(newValue?.value)}
             isClearable
             theme={theme}
+            styles={{
+                menu: (styles) => ({ ...styles, marginTop: 0 })
+            }}
             className={className}
             value={neverChange ? null : undefined}
         />
