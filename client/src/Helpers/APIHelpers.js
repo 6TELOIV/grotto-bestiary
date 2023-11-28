@@ -127,7 +127,11 @@ async function modifyInventory(cards, delta = false) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            cards,
+            cards: cards.map(c => ({
+                _id: c._id,
+                holo: c.holo,
+                Qty: c.Qty
+            })),
             delta
         }),
     });
