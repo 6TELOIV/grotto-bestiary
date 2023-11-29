@@ -9,7 +9,7 @@ import Modal from 'react-modal';
 import { parseCardList } from '../Helpers/TextHelper';
 import copy from "copy-to-clipboard";
 import ButtonGroup from '../Components/ButtonGroup';
-import { makeTTSDeck, save } from '../Helpers/DownloadHelper';
+import { save } from '../Helpers/DownloadHelper';
 
 function Deck({ initDeck, owner, currentUser, cardOptions, challengerOptions, onDeckNameChange, onDeckDelete }) {
     const [deck, setDeck] = useState(initDeck);
@@ -263,9 +263,9 @@ Radroot,3`,
                 (acc, card) => acc += `${card.Qty} ${card.Name}\n`,
                 ""
             );
-        } else if (exportFormat === "code") {
+        } else if (exportFormat === "code-v" || exportFormat === "code-m") {
             const lessThan3Values = { 1: 'i', 2: 'j', 3: 'l' }
-            let exportDeck = "GB!"
+            let exportDeck = "GB" + (exportFormat === "code-v" ? "v" : "!");
             cards.reduce(
                 (acc, card) => {
                     exportDeck += (card.Number - acc) + (card.Qty <= 3 ? lessThan3Values[card.Qty] : `(${card.Qty})`);
@@ -281,11 +281,7 @@ Radroot,3`,
 
     function exportToFile() {
         let decklist = exportDeck(deck, exportFormat);
-        if (exportFormat === "tts") {
-            let ttsDeck = makeTTSDeck(decklist);
-            save(deck.name + '.json', ttsDeck);
-            setExportModalOpen(false);
-        } else if (exportFormat === "decklist") {
+        if (exportFormat === "decklist") {
             save(deck.name + '.txt', decklist);
         }
     }
@@ -461,9 +457,6 @@ Radroot,3`,
                     ]}
                     selected={importFormat}
                     onSelect={setImportFormat}
-                    disabled={[
-                        "code"
-                    ]}
                 />
                 <label>Decklist:</label><br />
                 <textarea placeholder={examples[importFormat]} onChange={(e) => setImportText(e.target.value)} /><br />
@@ -487,23 +480,20 @@ Radroot,3`,
                             label: "Decklist"
                         },
                         {
-                            value: "tts",
-                            label: "TTS Object"
+                            value: "code-v",
+                            label: "Deck Code (Vintage)"
                         },
                         {
-                            value: "code",
-                            label: "Deck Code"
+                            value: "code-m",
+                            label: "Deck Code (Modern)"
                         },
                     ]}
                     selected={exportFormat}
                     onSelect={setExportFormat}
-                    disabled={[
-                        "code"
-                    ]}
                 />
                 <label>Export to:</label><br />
                 <div className='modal-buttons'>
-                    <button onClick={exportToFile} disabled={exportFormat === "code"}>Export to file</button>
+                    <button onClick={exportToFile} disabled={exportFormat === "code-v" || exportFormat === "code-m"}>Export to file</button>
                     <button onClick={exportToClipboard} disabled={exportFormat === "tts"}>Export to Clipboard</button>
                 </div>
             </Modal>
