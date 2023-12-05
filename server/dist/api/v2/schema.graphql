@@ -1,0 +1,91 @@
+type Query {
+  "Gets the card with the given ID"
+  card(id: ID!): Card
+  "Gets cards matching the optional filter"
+  cards(filter: CardFilter): [Card]
+}
+
+"""
+Filter for the cards returned. Any ommitted fields are not filtered on.
+"""
+input CardFilter {
+  id: ID
+  digital: Boolean
+  number: Int
+  name: Regex
+  type: Regex
+  epic: Boolean
+  power: IntFilter
+  goal: IntFilter
+  cost: IntFilter
+  effect: Regex
+  fun: Regex
+  rarity: Rarity
+  holoType: HoloType
+}
+
+"""
+- Pattern is required.
+- Options are optional.
+- `i`, `m`, `x`, and `s` are supported according
+to the [MongoDB Specification](https://www.mongodb.com/docs/manual/reference/operator/query/regex/#mongodb-query-op.-options)
+"""
+input Regex {
+  pattern: String!
+  options: String
+}
+
+"""
+- op and value are required, and will compare according to the [MongoDB Specification](https://www.mongodb.com/docs/manual/reference/operator/query-comparison/)
+"""
+input IntFilter {
+  op: NumberOp
+  value: Int
+}
+
+enum NumberOp {
+  eq
+  gt
+  lt
+  gte
+  lte
+  ne
+}
+
+# type Mutation {
+#
+# }
+
+type Card {
+  id: ID!
+  digital: Boolean!
+  number: Int
+  name: String!
+  type: String!
+  epic: Boolean
+  power: Int
+  goal: Int
+  cost: Int
+  effect: String
+  fun: String
+  rarity: Rarity
+  holoType: HoloType
+  artists: [Artist]
+}
+
+enum Rarity {
+  R
+  C
+}
+
+enum HoloType {
+  BUBBLE
+  SHEEN
+  SHATTER
+  DOTS
+}
+
+type Artist {
+  name: String
+  link: String
+}

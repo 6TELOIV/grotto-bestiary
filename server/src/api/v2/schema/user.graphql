@@ -1,0 +1,59 @@
+extend type Query {
+    user(id: ID!): User
+    "Equivalent to `tradesForList` with `cards` equal to the user's cards with wishQuantity > 0. Will not return specified user."
+    tradesForUser(id: ID, holoSensitive: Boolean): [User]
+    "Finds users with the cards provided available. If holoSensitive is false, will ignore holo status of trades"
+    tradesForList(cards: [CardWithHolo], holoSensitive: Boolean): [User]
+}
+
+input CardWithHolo {
+    id: ID
+    holo: Boolean
+}
+
+type User {
+    id: ID!
+    name: String!
+    discordUsername: String!
+    discordDiscriminator: String!
+    discordAvatar: String
+    discordBanner: String
+    discordBannerColor: String
+    region: CountryA2
+    bio: String
+    completedTrades: Int
+    inventory: [InventoryItem]
+    autoInventoryRules: [AutoInventoryRule]
+    lastOnline: Date
+}
+
+type InventoryItem {
+    card: Card
+    quantity: Int
+    tradeQuantity: Int
+    wishQuantity: Int
+    holo: Boolean
+}
+
+type AutoInventoryRule {
+    name: String
+    filter: AutoInventoryRuleFilter
+    tradeQuantity: [AutoInventoryRuleQuantityCaseValuePair]
+    wishQuantity: [AutoInventoryRuleQuantityCaseValuePair]
+}
+
+type AutoInventoryRuleFilter {
+    name: String
+    type: String
+    rarity: Rarity
+    holo: Boolean
+}
+
+"""
+- case must be like "qty>X", "qty<X", "qty=X", "qty>=X", "qty<=X", "qty!=X", or "default" where X is an integer
+- value must be like "qty+X", "qty-X", "X+qty", or "X-qty" where X is and integer
+"""
+type AutoInventoryRuleQuantityCaseValuePair {
+    case: String
+    value: String
+}

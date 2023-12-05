@@ -1,0 +1,33 @@
+{
+  "dependencies": {
+    "@apollo/server": "^4.9.5",
+    "@apollo/subgraph": "^2.6.1",
+    "@types/express-session": "^1.17.10",
+    "connect-mongo": "^5.0.0",
+    "eris": "^0.17.2",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "mongodb": "^5.5.0",
+    "node-fetch": "^3.3.1"
+  },
+  "name": "grotto-bestiary",
+  "main": "index.mjs",
+  "scripts": {
+    "generate": "graphql-codegen --config codegen.ts",
+    "compile": "npm run generate && tsc && copyfiles -u 1 src/**/*.graphql src/**/*.pem dist/",
+    "dev": "npm run compile && node -r dotenv/config dist/index.mjs dotenv_config_path=.env.local",
+    "build": "npm run compile",
+    "heroku-postbuild": "cd client && npm ci && npm run build"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/typescript": "4.0.1",
+    "@graphql-codegen/typescript-resolvers": "4.0.1",
+    "@types/node": "^20.10.0",
+    "copyfiles": "^2.4.1",
+    "dotenv": "^16.3.1",
+    "typescript": "^5.3.2"
+  }
+}

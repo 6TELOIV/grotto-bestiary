@@ -1,0 +1,59 @@
+extend type Query {
+  "Gets the card with the given ID"
+  card(id: ID!): Card
+  "Gets cards matching the optional filter"
+  cards(filter: CardFilter): [Card]
+}
+
+"""
+Filter for the cards returned. Any ommitted fields are not filtered on.
+"""
+input CardFilter {
+  id: ID
+  digital: Boolean
+  number: Int
+  name: Regex
+  type: Regex
+  epic: Boolean
+  power: IntFilter
+  goal: IntFilter
+  cost: IntFilter
+  effect: Regex
+  fun: Regex
+  rarity: Rarity
+  holoType: HoloType
+}
+
+type Card {
+  id: ID!
+  digital: Boolean!
+  number: Int
+  name: String!
+  type: String!
+  epic: Boolean
+  power: Int
+  goal: Int
+  cost: Int
+  effect: String
+  fun: String
+  rarity: Rarity
+  holoType: HoloType
+  artists: [Artist]
+}
+
+enum Rarity {
+  R
+  C
+}
+
+enum HoloType {
+  BUBBLE
+  SHEEN
+  SHATTER
+  DOTS
+}
+
+type Artist {
+  name: String
+  link: String
+}
