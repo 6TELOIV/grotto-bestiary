@@ -128,8 +128,8 @@ router.get("/user", async (req, res, next) => {
                 username = username.substring(1);
             }
             const user = await db.collection("users").findOne({
-                username: username,
-                discriminator: discriminator,
+                username: { $eq: username },
+                discriminator: { $eq: discriminator },
             });
 
             if (user === null) {
